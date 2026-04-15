@@ -1,0 +1,1540 @@
+    /* ═══════════════════════════════════════════════════════════════
+       VARIÁVEIS CSS GLOBAIS (Design Tokens)
+       Centralizar cores e espaçamentos aqui facilita manutenção:
+       basta alterar o valor aqui para mudar em todo o site.
+    ═══════════════════════════════════════════════════════════════ */
+    :root {
+      /* --- Paleta de Cores Principal --- */
+      --branco:        #ffffff;   /* Fundo claro, áreas de respiro */
+      --azul-claro:    #cddddd;   /* Fundos suaves, seções alternadas */
+      --teal-medio:    #9cc6c4;   /* Detalhes, ícones, bordas leves */
+      --teal-escuro:   #409d8b;   /* Botões secundários, destaques */
+      --teal-profundo: #015e54;   /* Cabeçalho, áreas escuras, textos */
+      --laranja:       #e08340;   /* Cor de ação, botões primários */
+      --laranja-hover: #c96e2e;   /* Laranja escurecido para hover */
+      --texto-escuro:  #1a2e2b;   /* Texto principal em fundo claro */
+      --texto-medio:   #3d5a57;   /* Texto secundário, parágrafos */
+
+      /* --- Tipografia --- */
+      --fonte-titulo:  'Bebas Neue', sans-serif;   /* Títulos impactantes */
+      --fonte-sub:     'Raleway', sans-serif;      /* Subtítulos elegantes */
+      --fonte-corpo:   'DM Sans', sans-serif;      /* Texto de parágrafo */
+
+      /* --- Espaçamentos --- */
+      --espaco-secao:  100px;   /* Padding vertical padrão de cada seção */
+      --espaco-md:     60px;    /* Espaçamento médio */
+      --espaco-sm:     30px;    /* Espaçamento pequeno */
+      --raio-card:     16px;    /* Border-radius padrão para cards */
+
+      /* --- Sombras --- */
+      --sombra-suave: 0 4px 24px rgba(1, 94, 84, 0.1);
+      /* Sombra esverdeada suave para cards */
+      --sombra-forte: 0 8px 40px rgba(1, 94, 84, 0.22);
+      /* Sombra mais intensa para elementos em destaque */
+
+      /* --- Transições --- */
+      --transicao: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Curva de animação suave para todos os hovers */
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESET E BASE GLOBAL
+       Elimina inconsistências entre navegadores
+    ═══════════════════════════════════════════════════════════════ */
+    *, *::before, *::after {
+      box-sizing: border-box;  /* Inclui padding/border na largura total */
+      margin: 0;               /* Remove margens padrão do navegador */
+      padding: 0;              /* Remove paddings padrão do navegador */
+    }
+
+    html {
+      scroll-behavior: smooth;  /* Scroll suave ao clicar em links âncora */
+      font-size: 16px;          /* Tamanho base para cálculos em rem */
+    }
+
+    body {
+      font-family: var(--fonte-corpo);   /* Aplica a fonte de corpo globalmente */
+      color: var(--texto-escuro);        /* Cor de texto padrão */
+      background-color: var(--branco);   /* Fundo padrão branco */
+      overflow-x: hidden;                /* Evita scroll horizontal indesejado */
+      line-height: 1.7;                  /* Entrelinhas confortável para leitura */
+    }
+
+    /* Remove sublinhado padrão dos links */
+    a {
+      text-decoration: none;
+      color: inherit;  /* Herda a cor do elemento pai */
+    }
+
+    /* Remove marcadores padrão das listas */
+    ul, ol {
+      list-style: none;
+    }
+
+    /* Garante que imagens sejam responsivas por padrão */
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       UTILITÁRIOS GLOBAIS
+       Classes reutilizáveis que evitam duplicação de código
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* Container centralizado com largura máxima */
+    .container {
+      width: 100%;
+      max-width: 1200px;       /* Largura máxima do conteúdo */
+      margin: 0 auto;          /* Centraliza horizontalmente */
+      padding: 0 24px;         /* Respiro lateral em telas pequenas */
+    }
+
+    /* Tag de seção com respiro vertical padrão */
+    .secao {
+      padding: var(--espaco-secao) 0;
+    }
+
+    /* Título principal de seção */
+    .titulo-secao {
+      font-family: var(--fonte-titulo);   /* Bebas Neue */
+      font-size: clamp(2.4rem, 5vw, 4rem); /* Tamanho fluido: mínimo 2.4rem, cresce até 4rem */
+      color: var(--teal-profundo);
+      letter-spacing: 2px;               /* Espaçamento entre letras do Bebas */
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    /* Subtítulo abaixo do título de seção */
+    .subtitulo-secao {
+      font-family: var(--fonte-sub);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--texto-medio);
+      letter-spacing: 3px;               /* Efeito "allcaps espaçado" */
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* Linha decorativa abaixo de títulos */
+    .linha-titulo {
+      width: 60px;
+      height: 3px;
+      background: var(--laranja);        /* Acento laranja */
+
+      margin-bottom: 40px;
+      border-radius: 2px;
+      transition: width var(--transicao);  /* Anima largura no hover do pai */
+    }
+
+    /* Botão primário (laranja) */
+    .btn-primario {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;                         /* Espaço entre ícone e texto */
+      background: var(--laranja);
+      color: var(--branco);
+      font-family: var(--fonte-sub);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 4px;               /* Cantos levemente arredondados */
+      border: 2px solid var(--laranja);
+      cursor: pointer;
+      transition: all var(--transicao);
+      position: relative;
+      overflow: hidden;                 /* Para o efeito de ripple do pseudo-elemento */
+    }
+
+    /* Efeito de brilho deslizante no hover do botão primário */
+    .btn-primario::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-primario:hover {
+      background: var(--laranja-hover);
+      border-color: var(--laranja-hover);
+      transform: translateY(-2px);       /* Leve elevação no hover */
+      box-shadow: 0 8px 24px rgba(224, 131, 64, 0.4);
+    }
+
+    .btn-primario:hover::after {
+      left: 100%;                        /* O brilho desliza da esquerda para a direita */
+    }
+
+    /* Botão secundário (outline teal) */
+    .btn-secundario {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--teal-profundo);
+      font-family: var(--fonte-sub);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 34px;
+      border-radius: 4px;
+      border: 2px solid var(--teal-profundo);
+      cursor: pointer;
+      transition: all var(--transicao);
+    }
+
+    .btn-secundario:hover {
+      background: var(--teal-profundo);
+      color: var(--branco);
+      transform: translateY(-2px);
+    }
+
+    /* Animação de entrada fadeInUp — usada via JS com IntersectionObserver */
+    .fade-in {
+      opacity: 0;                        /* Começa invisível */
+      transform: translateY(30px);       /* Começa 30px abaixo */
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visivel {
+      opacity: 1;                        /* Fica visível */
+      transform: translateY(0);          /* Volta à posição original */
+    }
+
+    /* Atraso escalonado para grupos de elementos que aparecem em sequência */
+    .fade-in:nth-child(1) { transition-delay: 0s;    }
+    .fade-in:nth-child(2) { transition-delay: 0.1s;  }
+    .fade-in:nth-child(3) { transition-delay: 0.2s;  }
+    .fade-in:nth-child(4) { transition-delay: 0.3s;  }
+    .fade-in:nth-child(5) { transition-delay: 0.4s;  }
+
+          /* NAVBAR BASE */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 70px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .navbar-logo-top {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      
+    }
+
+    .navbar-logo-top img {
+      max-height: 100px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar-inner {
+      width: 100%;
+      height: 100%;
+      display: flex; /* IMPORTANT */
+    }
+
+    /* LEFT SIDE */
+    .navbar-esquerda {
+      width: 50%;
+      height: 100%;
+      background: var(--branco);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding-left: 24px;
+      padding-right: 60px; /* SPACE BEFORE DIAGONAL */
+
+      /* DIAGONAL */
+      clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 100%, 0 100%);
+    }
+
+    /* RIGHT SIDE */
+    .navbar-direita {
+      width: 50%;
+      height: 100%;
+      background: var(--teal-profundo);
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      padding-left: 60px; /* SPACE AFTER DIAGONAL */
+      padding-right: 24px;
+
+      /* DIAGONAL */
+      clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    /* LOGO */
+    .navbar-logo {
+      font-family: var(--fonte-titulo);
+      font-size: 1.3rem;
+      color: var(--teal-profundo);
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .navbar-logo span {
+      color: var(--laranja);
+    }
+
+    /* MENUS */
+    .nav-menu-esq,
+    .nav-menu-dir {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* ITEMS */
+    .nav-item {
+      font-family: var(--fonte-sub);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    /* COLORS */
+    .navbar-esquerda .nav-item {
+      color: var(--teal-profundo);
+    }
+
+    .navbar-direita .nav-item {
+      color: var(--azul-claro);
+    }
+
+    /* HOVER */
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--laranja);
+      transition: 0.3s;
+    }
+
+    .nav-item:hover {
+      color: var(--laranja);
+      transform: translateY(-2px);
+    }
+
+    .nav-item:hover::after {
+      width: 100%;
+    }
+    /* Botão hambúrguer — visível apenas em mobile */
+    .hamburger {
+      display: none;              /* Escondido em desktop */
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+      position: relative;
+    }
+
+    /* Linhas do ícone hambúrguer */
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--teal-profundo);
+      border-radius: 2px;
+      transition: all var(--transicao);
+    }
+
+    /* Menu mobile — dropdown que aparece abaixo da navbar */
+    .menu-mobile {
+      display: none;              /* Escondido por padrão */
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: var(--teal-profundo);
+      padding: 24px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .menu-mobile.aberto {
+      display: flex;              /* Aparece quando a classe 'aberto' é adicionada via JS */
+    }
+
+    /* Item do menu mobile */
+    .menu-mobile .nav-item {
+      color: var(--azul-claro);
+      font-size: 1rem;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SEÇÃO HERO — TELA DE ENTRADA (ACIMA DO DOBRO)
+       Usa background.jpeg como fundo com efeito parallax
+    ═══════════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 100vh;              /* Ocupa toda a altura da janela */
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;           /* Esconde partes da imagem que saem do container */
+    }
+
+    /* Imagem de fundo do hero com efeito parallax via JS */
+    .hero-bg {
+      position: absolute;
+      inset: -60px 0;            /* Margem extra para o parallax não mostrar bordas */
+      background: url('images/background.jpeg') center/cover no-repeat;
+      will-change: transform;    /* Otimização: avisa o browser sobre animação de transform */
+      z-index: 0;
+    }
+
+    /* Overlay gradiente escurecendo a imagem de baixo para cima */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(1, 94, 84, 0.75) 0%,   /* Verde escuro à esquerda */
+        rgba(1, 94, 84, 0.35) 60%,  /* Desvanece ao centro */
+        transparent 100%
+      );
+      z-index: 1;
+    }
+
+    /* Conteúdo textual do hero */
+    .hero-conteudo {
+      position: relative;
+      z-index: 2;                /* Acima do overlay */
+      max-width: 650px;
+      color: var(--branco);
+    }
+
+    /* Tag de localização no topo do hero */
+    .hero-tag {
+      font-family: var(--fonte-sub);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--laranja);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Linha decorativa antes da tag */
+    .hero-tag::before {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background: var(--laranja);
+    }
+
+    /* Título principal do hero */
+    .hero-titulo {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.95;         /* Comprime linhas do título para ficar compacto */
+      letter-spacing: 3px;
+      color: var(--branco);
+      margin-bottom: 24px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-titulo .destaque {
+  /* Gradient spanning 200% width so we can slide it */
+  background: linear-gradient(
+    90deg,
+    var(--laranja),
+    #ffea72,       /* yellow */
+    var(--laranja)
+  );
+  background-size: 80% auto;
+
+  /* Clip the background to the text shape */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  animation: gradiente-destaque 3s linear infinite;
+}
+
+@keyframes gradiente-destaque {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+    /* Subtítulo descritivo do hero */
+    .hero-subtitulo {
+      font-family: var(--fonte-sub);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+
+    /* Container dos botões do hero */
+    .hero-botoes {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;           /* Em mobile os botões quebram linha */
+    }
+
+    /* Botão branco/outline específico para o hero */
+    .btn-hero-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--branco);
+      font-family: var(--fonte-sub);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 15px 32px;
+      border-radius: 4px;
+      border: 2px solid rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: all var(--transicao);
+    }
+
+    .btn-hero-outline:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: var(--branco);
+    }
+
+    /* Indicador de scroll no rodapé do hero */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--fonte-sub);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite; /* Animação de pulso vertical */
+    }
+
+    /* Animação do indicador de scroll */
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0);    }
+      50%       { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SEÇÃO ESCOLA
+       Apresenta a escola, missão, localização e cards de destaque
+    ═══════════════════════════════════════════════════════════════ */
+    #escola {
+      background: var(--branco);
+      padding-top: calc(var(--espaco-secao) + 20px);
+    }
+
+    /* Layout de duas colunas: texto à esq, imagem à dir */
+    .escola-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: var(--espaco-secao);
+    }
+
+    /* Bloco de texto da seção escola */
+    .escola-texto p {
+      font-size: 1rem;
+      color: var(--texto-medio);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    /* Citação em destaque — bloco lateral com barra laranja */
+    .escola-destaque {
+      border-left: 4px solid var(--laranja);
+      padding: 20px 24px;
+      background: rgba(205, 221, 221, 0.3);  /* Fundo azul-claro transparente */
+      border-radius: 0 var(--raio-card) var(--raio-card) 0;
+      margin: 24px 0;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--teal-profundo);
+      line-height: 1.8;
+    }
+
+    /* Bloco de localização com ícone */
+    .escola-localizacao {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--teal-profundo);
+      color: var(--branco);
+      padding: 20px 24px;
+      border-radius: var(--raio-card);
+      margin-top: 24px;
+    }
+
+    .escola-localizacao i {
+      font-size: 1.5rem;
+      color: var(--laranja);
+      flex-shrink: 0;             /* Impede o ícone de encolher */
+      margin-top: 3px;
+    }
+
+    .escola-localizacao strong {
+      display: block;
+      font-family: var(--fonte-sub);
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal-medio);
+      margin-bottom: 4px;
+    }
+
+    .escola-localizacao p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    /* Container da imagem da escola */
+    .escola-imagem-wrapper {
+      position: relative;
+      border-radius: var(--raio-card);
+      overflow: hidden;
+      box-shadow: var(--sombra-forte);
+      aspect-ratio: 4/5;          /* Proporção retrato para a foto */
+    }
+
+    .escola-imagem-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;          /* Preenche o container sem distorcer */
+      transition: transform 0.8s ease;
+    }
+
+    .escola-imagem-wrapper:hover img {
+      transform: scale(1.04);     /* Zoom suave no hover */
+    }
+
+    /* Plaquinha de "desde 1997" sobre a imagem */
+    .escola-badge {
+      position: absolute;
+      bottom: 24px; right: 24px;
+      background: var(--laranja);
+      color: var(--branco);
+      font-family: var(--fonte-titulo);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    /* Grid de cards de destaque abaixo do grid principal */
+    .escola-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: var(--espaco-md);
+    }
+
+    /* Card individual de destaque */
+    .escola-card {
+      background: var(--branco);
+      border: 1px solid rgba(156, 198, 196, 0.4);  /* Borda teal suave */
+      border-radius: var(--raio-card);
+      padding: 32px 24px;
+      text-align: center;
+      transition: all var(--transicao);
+      cursor: default;
+    }
+
+    .escola-card:hover {
+      transform: translateY(-8px);              /* Eleva o card */
+      box-shadow: var(--sombra-forte);
+      border-color: var(--teal-medio);
+    }
+
+    /* Ícone do card com círculo de fundo */
+    .escola-card-icone {
+      width: 64px; height: 64px;
+      border-radius: 50%;                       /* Círculo perfeito */
+      background: rgba(64, 157, 139, 0.12);     /* Fundo teal transparente */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.6rem;
+      color: var(--teal-escuro);
+      transition: background var(--transicao), color var(--transicao);
+    }
+
+    .escola-card:hover .escola-card-icone {
+      background: var(--teal-profundo);
+      color: var(--branco);
+    }
+
+    .escola-card h4 {
+      font-family: var(--fonte-sub);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--teal-profundo);
+      margin-bottom: 8px;
+    }
+
+    .escola-card p {
+      font-size: 0.85rem;
+      color: var(--texto-medio);
+      line-height: 1.6;
+    }
+
+    /* CTA (Call to Action) centralizado no final da seção Escola */
+    .escola-cta {
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SEÇÃO AULAS
+       Separada visualmente da seção Escola por fundo alternado
+    ═══════════════════════════════════════════════════════════════ */
+    #aulas {
+      background: var(--azul-claro);  /* Fundo azul claro para diferenciar */
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Forma decorativa no fundo da seção Aulas */
+    #aulas::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(1, 94, 84, 0.06);  /* Círculo teal muito transparente */
+      pointer-events: none;               /* Não bloqueia cliques */
+    }
+
+    /* Cabeçalho da seção com alinhamento central */
+    .aulas-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .aulas-header .linha-titulo {
+      margin: 0 auto 40px;  /* Centraliza a linha decorativa */
+    }
+
+    /* Grid de dois cards lado a lado */
+    .aulas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    /* Card de modalidade de aula */
+    .aula-card {
+      background: var(--branco);
+      border-radius: var(--raio-card);
+      padding: 48px 40px;
+      box-shadow: var(--sombra-suave);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transicao);
+    }
+
+    .aula-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra-forte);
+    }
+
+    /* Faixa colorida no topo do card — diferencia os dois tipos */
+    .aula-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      transition: height var(--transicao);
+    }
+
+    /* Faixa laranja para aulas públicas */
+    .aula-card.publica::before  { background: var(--laranja); }
+
+    /* Faixa teal para aulas particulares */
+    .aula-card.particular::before { background: var(--teal-escuro); }
+
+    .aula-card:hover::before {
+      height: 8px;              /* Engrossa a faixa no hover */
+    }
+
+    /* Ícone grande no topo do card */
+    .aula-icone {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .aula-card.publica .aula-icone    { color: var(--laranja); }
+    .aula-card.particular .aula-icone { color: var(--teal-escuro); }
+
+    /* Título do card de aula */
+    .aula-card h3 {
+      font-family: var(--fonte-titulo);
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: var(--teal-profundo);
+      margin-bottom: 6px;
+    }
+
+    /* Badge "GRATUITO" ou "POR AGENDAMENTO" */
+    .aula-badge {
+      display: inline-block;
+      font-family: var(--fonte-sub);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .aula-badge.verde {
+      background: rgba(64, 157, 139, 0.15);
+      color: var(--teal-escuro);
+    }
+
+    .aula-badge.laranja {
+      background: rgba(224, 131, 64, 0.15);
+      color: var(--laranja-hover);
+    }
+
+    .aula-card p {
+      font-size: 0.97rem;
+      color: var(--texto-medio);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    /* Lista de features dentro do card */
+    .aula-lista {
+      margin: 20px 0 28px;
+    }
+
+    .aula-lista li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.92rem;
+      color: var(--texto-medio);
+      border-bottom: 1px solid rgba(156, 198, 196, 0.2);  /* Separador suave */
+    }
+
+    .aula-lista li:last-child {
+      border-bottom: none;      /* Remove separador do último item */
+    }
+
+    .aula-lista li i {
+      color: var(--teal-escuro);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .aula-card.publica .aula-lista li i { color: var(--laranja); }
+
+    /* CTA da seção aulas — centralizado abaixo dos dois cards */
+    .aulas-cta {
+      text-align: center;
+      margin-top: 60px;
+      padding: 48px;
+      background: var(--teal-profundo);
+      border-radius: var(--raio-card);
+      color: var(--branco);
+    }
+
+    .aulas-cta h3 {
+      font-family: var(--fonte-titulo);
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .aulas-cta p {
+      opacity: 0.8;
+      margin-bottom: 28px;
+      font-size: 1rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SEÇÃO EQUIPE
+       Grid de cards dos professores
+    ═══════════════════════════════════════════════════════════════ */
+    #equipe {
+      background: var(--branco);
+    }
+
+    .equipe-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .equipe-header .linha-titulo {
+      margin: 0 auto 40px;
+    }
+
+    /* Grid responsivo de 4 cards de professores */
+    .equipe-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    /* Card de professor */
+    .professor-card {
+      border-radius: var(--raio-card);
+      overflow: hidden;
+      background: var(--branco);
+      box-shadow: var(--sombra-suave);
+      cursor: pointer;               /* Indica que é clicável */
+      transition: all var(--transicao);
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    .professor-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--sombra-forte);
+    }
+
+    /* Container da foto do professor */
+    .prof-foto-wrap {
+      position: relative;
+      aspect-ratio: 3/4;            /* Proporção retrato */
+      overflow: hidden;
+      background: var(--azul-claro); /* Placeholder quando não há foto */
+    }
+
+    .prof-picuruta-card,
+    .prof-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prof-foto-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .professor-card:hover .prof-foto-wrap img {
+      transform: scale(1.08);       /* Zoom mais pronunciado na foto */
+    }
+
+    /* Overlay gradiente na parte inferior da foto */
+    .prof-foto-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(1,94,84,0.8), transparent);
+      opacity: 10;                   /* Invisível por padrão */
+      transition: opacity var(--transicao);
+    }
+
+    .professor-card:hover .prof-foto-overlay {
+      opacity: 1;                   /* Aparece no hover */
+    }
+
+    /* Ícone de "ver perfil" que aparece no hover */
+    .prof-foto-overlay i {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      color: var(--branco);
+      font-size: 1.5rem;
+    }
+
+    /* Placeholder colorido quando a foto é SVG/inicial */
+    .prof-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fonte-titulo);
+      font-size: 4rem;
+      letter-spacing: 2px;
+    }
+
+    /* Informações abaixo da foto */
+    .prof-info {
+      padding: 20px;
+      border-top: 3px solid var(--teal-medio);
+    }
+
+    .prof-info h4 {
+      font-family: var(--fonte-sub);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal-profundo);
+      margin-bottom: 4px;
+    }
+
+    .prof-info span {
+      font-size: 0.82rem;
+      color: var(--texto-medio);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SEÇÃO O GATO
+       Seção criativa sobre o Picuruta Salazar com parallax
+    ═══════════════════════════════════════════════════════════════ */
+    #ogato {
+      background: var(--teal-profundo);
+      color: var(--branco);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Textura de padrão de ondas no fundo */
+    #ogato::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      /* SVG de padrão ondulado como data URI */
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='20' viewBox='0 0 60 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q15 0 30 10 Q45 20 60 10' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='2'/%3E%3C/svg%3E");
+      background-size: 60px 20px;
+      pointer-events: none;         /* Não bloqueia cliques */
+    }
+
+    /* Layout em duas colunas: texto + bloco visual */
+    .gato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 80px;
+    }
+
+    /* Cabeçalho da seção O Gato */
+    .gato-header .subtitulo-secao {
+      color: var(--teal-medio);
+    }
+
+    .gato-header .titulo-secao {
+      color: var(--branco);
+    }
+
+    .gato-header .linha-titulo {
+      background: var(--laranja);
+    }
+
+    /* Parágrafos de texto sobre o Picuruta */
+    .gato-texto p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 18px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* Container do botão do Instagram */
+    .gato-botoes {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Botão do Instagram com gradiente */
+    .btn-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: var(--branco);
+      font-family: var(--fonte-sub);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transicao);
+    }
+
+    .btn-instagram:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(220, 39, 67, 0.4);
+      filter: brightness(1.1);     /* Clareia levemente */
+    }
+
+    /* Grade de fotos na coluna direita — Mosaico */
+    .gato-fotos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 200px 200px;
+      gap: 12px;
+    }
+
+    /* Foto individual do mosaico */
+    .gato-foto {
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);  /* Placeholder translúcido */
+      transition: transform var(--transicao), box-shadow var(--transicao);
+    }
+
+    .gato-foto:hover {
+      transform: scale(1.03) rotate(1deg); /* Leve zoom e inclinação */
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      z-index: 2;                          /* Fica sobre os demais no hover */
+    }
+
+    /* Primeira foto ocupa duas linhas (altura dupla) */
+    .gato-foto:first-child {
+      grid-row: span 2;
+    }
+
+    .gato-foto img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* Sub-seção do documentário dentro de O Gato */
+    .gato-documentario {
+      position: relative;
+      z-index: 1;
+      background: rgba(0,0,0,0.3);        /* Escurece um pouco o fundo */
+      border-radius: var(--raio-card);
+      overflow: hidden;
+      padding: 60px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .gato-documentario .subtitulo-secao {
+      color: var(--laranja);
+    }
+
+    .gato-documentario .titulo-secao {
+      color: var(--branco);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+    }
+
+    .gato-documentario .linha-titulo {
+      background: var(--laranja);
+    }
+
+    /* Layout do documentário: texto + embed do vídeo */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;   /* Vídeo maior que o texto */
+      gap: 60px;
+      align-items: center;
+    }
+
+    /* Container do iframe do YouTube com proporção 16:9 */
+    .doc-video {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16/9;            /* Mantém proporção do vídeo */
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      border: 2px solid rgba(224, 131, 64, 0.4);  /* Borda laranja sutil */
+    }
+
+    .doc-video iframe {
+      position: absolute;
+      inset: 0;                      /* Ocupa todo o container */
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .doc-texto p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SEÇÃO SALAZAR OCEAN — EM CONSTRUÇÃO
+    ═══════════════════════════════════════════════════════════════ */
+    #salazar-ocean {
+      background: var(--azul-claro);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grande texto decorativo de fundo "em breve" */
+    #salazar-ocean::after {
+      content: 'SOON';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--fonte-titulo);
+      font-size: 20rem;
+      color: rgba(1, 94, 84, 0.04);   /* Quase invisível — só textura */
+      letter-spacing: 10px;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .ocean-conteudo {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Ícone central "em construção" */
+    .ocean-icone {
+      font-size: 4rem;
+      color: var(--teal-escuro);
+      margin-bottom: 32px;
+      animation: girar 8s linear infinite;  /* Gira devagar */
+    }
+
+    @keyframes girar {
+      from { transform: rotate(0deg);   }
+      to   { transform: rotate(360deg); }
+    }
+
+    .ocean-conteudo .titulo-secao {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .ocean-conteudo p {
+      font-size: 1.05rem;
+      color: var(--texto-medio);
+      line-height: 1.8;
+      margin-top: 16px;
+    }
+
+    /* Badge "Em Breve" */
+    .ocean-badge {
+      display: inline-block;
+      margin-top: 32px;
+      background: var(--teal-profundo);
+      color: var(--branco);
+      font-family: var(--fonte-sub);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 30px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOOTER
+       Rodapé com links, contato e créditos
+    ═══════════════════════════════════════════════════════════════ */
+    .footer {
+      background: var(--teal-profundo);
+      color: var(--branco);
+      padding: 80px 0 40px;
+    }
+
+    /* Grid de 4 colunas no footer */
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    /* Logo e texto de apresentação no footer */
+    .footer-brand .footer-logo {
+      font-family: var(--fonte-titulo);
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      color: var(--branco);
+    }
+
+    .footer-brand .footer-logo span {
+      color: var(--laranja);
+    }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      max-width: 280px;
+    }
+
+    /* Redes sociais no footer */
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--branco);
+      font-size: 1rem;
+      transition: all var(--transicao);
+      cursor: pointer;
+    }
+
+    .social-link:hover {
+      background: var(--laranja);
+      transform: translateY(-3px);
+    }
+
+    /* Colunas de links do footer */
+    .footer-col h5 {
+      font-family: var(--fonte-sub);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal-medio);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      transition: color var(--transicao);
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--laranja);
+    }
+
+    /* Bloco de informações de contato */
+    .footer-contato {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-contato-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-contato-item i {
+      color: var(--laranja);
+      margin-top: 3px;
+      flex-shrink: 0;
+      width: 16px;
+    }
+
+    /* Linha divisória antes do rodapé final */
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Prefeitura badge no footer */
+    .footer-parceria {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-parceria i {
+      color: var(--teal-medio);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVIDADE — MEDIA QUERIES
+       Adapta o layout para tablets e celulares
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* Tablet (até 1024px) */
+    @media (max-width: 1024px) {
+      .escola-cards {
+        grid-template-columns: repeat(2, 1fr);  /* 2 colunas em tablet */
+      }
+
+      .equipe-grid {
+        grid-template-columns: repeat(2, 1fr);  /* 2 colunas em tablet */
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;         /* 2 colunas no footer */
+        gap: 40px;
+      }
+
+      .doc-grid {
+        grid-template-columns: 1fr;             /* Empilha no tablet */
+        gap: 40px;
+      }
+    }
+
+    /* Mobile (até 768px) */
+    @media (max-width: 768px) {
+      :root {
+        --espaco-secao: 70px;  /* Reduz o espaçamento em mobile */
+      }
+
+      /* Esconde os menus desktop e mostra o hambúrguer */
+      .nav-menu-esq,
+      .nav-menu-dir {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;  /* Mostra o hambúrguer */
+        position: absolute;
+        right: 20px;
+        z-index: 1001;
+      }
+
+      /* Simplifica a navbar em mobile (sem split diagonal) */
+      .navbar-esquerda {
+        width: 100%;
+        clip-path: none;        /* Remove o corte diagonal */
+        background: var(--branco);
+      }
+
+      .navbar-direita {
+        display: none;          /* Esconde o lado teal da navbar */
+      }
+
+      /* Empilha o grid da escola */
+      .escola-grid {
+        grid-template-columns: 1fr;  /* Uma coluna em mobile */
+        gap: 40px;
+      }
+
+      /* Reordena: imagem vai para cima em mobile */
+      .escola-imagem-wrapper {
+        order: -1;
+        aspect-ratio: 16/9;
+      }
+
+      /* Empilha os cards de aulas */
+      .aulas-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      /* Empilha o grid do O Gato */
+      .gato-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      /* Empilha o grid do footer */
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      /* Empilha os cards da equipe */
+      .equipe-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Empilha o bloco do documentário */
+      .gato-documentario {
+        padding: 40px 24px;
+      }
+
+      .doc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Ajusta o mosaico de fotos */
+      .gato-fotos {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gato-foto:first-child {
+        grid-row: span 1;        /* Remove o span duplo em mobile */
+      }
+    }
+
+    /* Mobile pequeno (até 480px) */
+    @media (max-width: 480px) {
+      .equipe-grid {
+        grid-template-columns: 1fr;  /* Uma coluna em celulares menores */
+      }
+
+      .escola-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-titulo {
+        font-size: 3rem;
+      }
+    }

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<!-- Define o tipo de documento como HTML5 -->
+<html lang="pt-BR">
+<!-- Define o idioma da página como Português Brasileiro -->
+
+<head>
+  <!-- Seção de metadados - não visível ao usuário -->
+  <meta charset="UTF-8" />
+  <!-- Codificação de caracteres UTF-8 garante suporte a acentos e caracteres especiais -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Meta viewport garante responsividade em dispositivos móveis -->
+  <meta name="description" content="Escola de Surf e Competição Picuruta Salazar — Santos, SP. Aulas gratuitas e particulares desde 1997." />
+  <!-- Descrição para SEO e compartilhamento em redes sociais -->
+  <title>Escola de Surf Picuruta Salazar | Santos – SP</title>
+  <!-- Título da aba do navegador -->
+
+  <!-- ═══════════════════════════════════════════
+       FONTES EXTERNAS (Google Fonts)
+       Bebas Neue  → títulos impactantes estilo surf
+       Raleway     → subtítulos elegantes
+       DM Sans     → corpo de texto limpo e legível
+  ═══════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- Pré-conexão com o servidor do Google para carregar fontes mais rápido -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Pré-conexão cruzada com o CDN de fontes do Google -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Raleway:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="diogo.css" />
+
+  <!-- ═══════════════════════════════════════════
+       ÍCONES (Font Awesome)
+       Usado para ícones do menu hambúrguer, Instagram, etc.
+  ═══════════════════════════════════════════ -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       NAVBAR — MENU FIXO COM SPLIT DIAGONAL
+  ═══════════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+    <div class="navbar-logo-top" aria-hidden="true">
+      <img src="images/logo.svg" alt="Logotipo da Escola de Surf Picuruta Salazar" />
+    </div>
+    <div class="navbar-inner">
+
+      <!-- LADO ESQUERDO (branco) — Logo + Menu principal -->
+      <div class="navbar-esquerda">
+        <!-- Logo da escola -->
+        <a href="#inicio" class="navbar-logo" aria-label="Página inicial Escola Picuruta Salazar">
+          PICURUTA <span>SALAZAR</span>
+        </a>
+        <!-- Menu do lado branco -->
+        <ul class="nav-menu-esq" role="list">
+          <li class="nav-item"><a href="#escola">ESCOLA</a></li>
+          <li class="nav-item"><a href="#aulas">AULAS</a></li>
+          <li class="nav-item"><a href="#equipe">EQUIPE</a></li>
+        </ul>
+      </div>
+
+      <!-- LADO DIREITO (teal escuro) — Menu secundário -->
+      <div class="navbar-direita">
+        <ul class="nav-menu-dir" role="list">
+          <li class="nav-item"><a href="#ogato">O GATO</a></li>
+          <li class="nav-item"><a href="#salazar-ocean">SALAZAR OCEAN</a></li>
+        </ul>
+      </div>
+
+      <!-- BOTÃO HAMBÚRGUER (visível apenas em mobile) -->
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        onclick="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- MENU MOBILE — aparece ao clicar no hambúrguer -->
+  <div class="menu-mobile" id="menuMobile" role="menu" aria-label="Menu mobile">
+    <a class="nav-item" href="#escola" onclick="fecharMenu()">ESCOLA</a>
+    <a class="nav-item" href="#aulas" onclick="fecharMenu()">AULAS</a>
+    <a class="nav-item" href="#equipe" onclick="fecharMenu()">EQUIPE</a>
+    <a class="nav-item" href="#ogato" onclick="fecharMenu()">O GATO</a>
+    <a class="nav-item" href="#salazar-ocean" onclick="fecharMenu()">SALAZAR OCEAN</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO — TELA DE ENTRADA
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="inicio" class="hero" aria-label="Seção de entrada">
+    <!-- Fundo com parallax — a imagem de Santos / Quebra-Mar -->
+    <div class="hero-bg" id="heroBg" role="img" aria-label="Vista aérea da praia de Santos"></div>
+    <!-- Overlay escurecido para legibilidade do texto -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Conteúdo central do hero -->
+    <div class="container">
+      <div class="hero-conteudo">
+        <!-- Tag de localização -->
+        <div class="hero-tag" aria-label="Localização: Santos, SP">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          Santos — SP · Desde 1992
+        </div>
+
+        <!-- Título principal do site -->
+        <h1 class="hero-titulo">
+          ESCOLA<br>
+          DE SURF<br>
+          <span class="destaque">PICURUTA</span>
+        </h1>
+
+        <!-- Subtítulo descritivo -->
+        <p class="hero-subtitulo">
+          Aprenda a surfar com um dos maiores nomes do surf brasileiro.
+          Aulas públicas gratuitas e particulares no Quebra-Mar de Santos.
+        </p>
+
+        <!-- Botões de chamada para ação -->
+        <div class="hero-botoes">
+          <a href="#aulas" class="btn-primario">
+            <i class="fa-solid fa-wave-square" aria-hidden="true"></i>
+            Ver Aulas
+          </a>
+          <a href="#escola" class="btn-hero-outline">
+            Conheça a Escola
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador de scroll para o usuário entender que há mais conteúdo abaixo -->
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <i class="fa-solid fa-chevron-down"></i>
+      scroll
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SEÇÃO ESCOLA
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="escola" class="secao" aria-labelledby="titulo-escola">
+    <div class="container">
+
+      <!-- Bloco principal: texto + imagem em duas colunas -->
+      <div class="escola-grid">
+
+        <!-- Coluna de texto -->
+        <div class="escola-texto fade-in">
+          <!-- Subtítulo acima do título -->
+          <p class="subtitulo-secao">Sobre nós</p>
+          <!-- Título principal da seção -->
+          <h2 class="titulo-secao" id="titulo-escola">
+            Escola de Surf e Competição
+          </h2>
+          <div class="linha-titulo" aria-hidden="true"></div>
+
+          <!-- Parágrafo obrigatório em destaque (citação oficial) -->
+          <blockquote class="escola-destaque">
+            "A Escola de Surf e Competição Picuruta Salazar é uma parceria entre o surfista e
+            a Prefeitura de Santos e oferece aulas gratuitamente, para alunos a partir de 7 anos
+            e, sem limite máximo de idade desde 1992."
+          </blockquote>
+
+          <!-- Texto descritivo adicional -->
+          <p>
+            Localizada no icônico Quebra-Mar de Santos, nossa escola nasceu da parceria entre
+            o multicampeão Picuruta Salazar e a Prefeitura de Santos, com o objetivo de democratizar
+            o surf e transformar vidas por meio do esporte.
+          </p>
+
+          <p>
+            Mais de 500 alunos por ano descobrem o prazer das ondas sob a orientação de
+            instrutores experientes e com a presença da maior lenda do surf de Santos.
+          </p>
+
+          <!-- Card de localização com ícone -->
+          <div class="escola-localizacao" role="complementary" aria-label="Localização da escola">
+            <i class="fa-solid fa-map-pin" aria-hidden="true"></i>
+            <div>
+              <strong>Localização</strong>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1822.8570882903912!2d-46.34960136766751!3d-23.970545275161644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce033b1afc68e9%3A0xf7c2e6e06b3ecd22!2sEscola%20de%20Surf%20Picuruta%20Salazar!5e0!3m2!1spt-BR!2sbr!4v1774401281064!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna da imagem da escola -->
+        <div class="escola-imagem-wrapper fade-in">
+          <!-- Imagem real da escola fornecida no projeto -->
+          <img
+            src="images/escola.png"
+            alt="Fachada da Escola de Surf Picuruta Salazar ao pôr do sol, com pranchas expostas"
+            loading="lazy"
+          />
+          <!-- Badge sobreposta à imagem -->
+          <div class="escola-badge" aria-label="Escola fundada em 1992">DESDE 1992</div>
+        </div>
+      </div>
+
+      <!-- Grid de 4 cards de destaque -->
+      <div class="escola-cards" role="list" aria-label="Destaques da escola">
+
+        <article class="escola-card fade-in" role="listitem">
+          <div class="escola-card-icone" aria-hidden="true">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <h4>Todas as Idades</h4>
+          <p>Aulas para alunos a partir de 7 anos, sem limite máximo de idade.</p>
+        </article>
+
+        <article class="escola-card fade-in" role="listitem">
+          <div class="escola-card-icone" aria-hidden="true">
+            <i class="fa-solid fa-building-columns"></i>
+          </div>
+          <h4>Parceria Prefeitura</h4>
+          <p>Projeto oficial em parceria com a Prefeitura de Santos desde 1997.</p>
+        </article>
+
+        <article class="escola-card fade-in" role="listitem">
+          <div class="escola-card-icone" aria-hidden="true">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <h4>Competição</h4>
+          <p>Foco em iniciação e desenvolvimento de atletas para competição.</p>
+        </article>
+
+        <article class="escola-card fade-in" role="listitem">
+          <div class="escola-card-icone" aria-hidden="true">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <h4>Inclusão</h4>
+          <p>Acesso gratuito e inclusivo ao esporte para toda a comunidade.</p>
+        </article>
+
+      </div>
+
+      <!-- Botão de CTA que faz scroll até a seção Aulas -->
+      <div class="escola-cta fade-in">
+        <a
+          href="#aulas"
+          class="btn-primario"
+          aria-label="Ver as aulas disponíveis"
+        >
+          <i class="fa-solid fa-wave-square" aria-hidden="true"></i>
+          Veja as Aulas
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SEÇÃO AULAS
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="aulas" class="secao" aria-labelledby="titulo-aulas">
+    <div class="container">
+
+      <!-- Cabeçalho centralizado da seção -->
+      <header class="aulas-header fade-in">
+        <p class="subtitulo-secao">O que oferecemos</p>
+        <h2 class="titulo-secao" id="titulo-aulas">Modalidades de Aulas</h2>
+        <div class="linha-titulo" aria-hidden="true"></div>
+      </header>
+
+      <!-- Grid com os dois cards de modalidade -->
+      <div class="aulas-grid">
+
+        <!-- CARD: Aulas Públicas Gratuitas -->
+        <article class="aula-card publica fade-in" aria-labelledby="titulo-publica">
+          <span class="aula-icone" aria-hidden="true"><i class="fa-solid fa-sun"></i></span>
+
+          <h3 id="titulo-publica">Aulas Públicas Gratuitas</h3>
+          <span class="aula-badge verde">✓ Gratuito</span>
+
+          <p>
+            Em parceria com a Prefeitura de Santos, as aulas públicas são completamente
+            <strong>gratuitas</strong> e abertas à comunidade. Uma oportunidade única de
+            aprender com uma lenda do surf sem custo algum.
+          </p>
+
+          <!-- Lista de benefícios/características -->
+          <ul class="aula-lista" aria-label="Características das aulas públicas">
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Para alunos a partir de 7 anos, sem limite de idade
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Funcionamento em grupos com turmas conforme disponibilidade
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Manifeste interesse e aguarde vaga em turma
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Aprenda com instrutores formados pelo próprio Picuruta
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Foco em comunidade, inclusão e desenvolvimento pessoal
+            </li>
+          </ul>
+
+          <a href="forms.html" class="btn-primario" aria-label="Inscrever-se nas aulas públicas">
+            <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+            Inscreva-se
+          </a>
+        </article>
+
+        <!-- CARD: Aulas Particulares -->
+        <article class="aula-card particular fade-in" aria-labelledby="titulo-particular">
+          <span class="aula-icone" aria-hidden="true"><i class="fa-solid fa-star"></i></span>
+
+          <h3 id="titulo-particular">Aulas Particulares</h3>
+          <span class="aula-badge laranja">Por Agendamento</span>
+
+          <p>
+            Voltadas para visitantes, empresas, eventos ou quem deseja atenção
+            <strong>individualizada</strong>. As aulas são agendadas diretamente com
+            a equipe conforme disponibilidade.
+          </p>
+
+          <ul class="aula-lista" aria-label="Características das aulas particulares">
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Atendimento individual ou em pequenos grupos
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Ideal para visitantes, empresas e eventos corporativos
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Horários flexíveis mediante agendamento prévio
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Metodologia personalizada para seu nível e objetivo
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Detalhes e valores combinados após o primeiro contato
+            </li>
+          </ul>
+
+          <a href="inscricao.html" class="btn-secundario" aria-label="Entrar em contato para aulas particulares">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            Entrar em Contato
+          </a>
+        </article>
+
+      </div>
+
+      <!-- Bloco de CTA geral da seção Aulas -->
+      <div class="aulas-cta fade-in">
+        <h3>Pronto para pegar sua primeira onda?</h3>
+        <p>Preencha nosso formulário e entraremos em contato assim que houver uma vaga disponível.</p>
+        <a href="inscricao.html" class="btn-primario" aria-label="Ir para o formulário de inscrição">
+          <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+          Inscreva-se Agora
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SEÇÃO EQUIPE
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="equipe" class="secao" aria-labelledby="titulo-equipe">
+    <div class="container">
+
+      <!-- Cabeçalho centralizado -->
+      <header class="equipe-header fade-in">
+        <p class="subtitulo-secao">Quem ensina</p>
+        <h2 class="titulo-secao" id="titulo-equipe">Equipe de Instrutores</h2>
+        <div class="linha-titulo" aria-hidden="true"></div>
+      </header>
+
+      <!-- Grid dos cards de professores -->
+      <div class="equipe-grid" role="list" aria-label="Instrutores da escola">
+
+        <!-- Cada card é um link para a página individual do professor -->
+        <a class="professor-card fade-in" href="professor-picuruta.html" role="listitem" aria-label="Ver perfil de Picuruta Salazar">
+          <div class="prof-foto-wrap">
+            <div class="prof-picuruta-card">
+              <img src="images/picuruta.png" alt="Foto de Picuruta Salazar surfando uma onda" loading="lazy" />
+            </div>
+          
+            <!-- Overlay com ícone de "ver mais" -->
+            <div class="prof-foto-overlay" aria-hidden="true">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+          <div class="prof-info">
+            <h4>Picuruta Salazar</h4>
+            <span>Fundador & Head Coach</span>
+          </div>
+        </a>
+
+        <a class="professor-card fade-in" href="professor-2.html" role="listitem" aria-label="Ver perfil de Rafael Aguiar">
+          <div class="prof-foto-wrap">
+            <div class="prof-placeholder" style="background: linear-gradient(135deg, #409d8b, #9cc6c4)">
+              <span style="color:rgba(255,255,255,0.3); font-size:5rem">RA</span>
+            </div>
+            <div class="prof-foto-overlay" aria-hidden="true">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+          <div class="prof-info">
+            <h4>Rafael Aguiar</h4>
+            <span>Instrutor de Surf</span>
+          </div>
+        </a>
+
+        <a class="professor-card fade-in" href="professor-3.html" role="listitem" aria-label="Ver perfil de Marina Costa">
+          <div class="prof-foto-wrap">
+            <div class="prof-placeholder" style="background: linear-gradient(135deg, #e08340, #cddddd)">
+              <span style="color:rgba(255,255,255,0.3); font-size:5rem">MC</span>
+            </div>
+            <div class="prof-foto-overlay" aria-hidden="true">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+          <div class="prof-info">
+            <h4>Marina Costa</h4>
+            <span>Instrutora — Iniciantes</span>
+          </div>
+        </a>
+
+        <a class="professor-card fade-in" href="professor-4.html" role="listitem" aria-label="Ver perfil de Lucas Vieira">
+          <div class="prof-foto-wrap">
+            <div class="prof-placeholder" style="background: linear-gradient(135deg, #015e54, #e08340)">
+              <span style="color:rgba(255,255,255,0.3); font-size:5rem">LV</span>
+            </div>
+            <div class="prof-foto-overlay" aria-hidden="true">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+          <div class="prof-info">
+            <h4>Lucas Vieira</h4>
+            <span>Treinador de Competição</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SEÇÃO O GATO — HISTORIA DO PICURUTA SALAZAR
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="ogato" class="secao" aria-labelledby="titulo-gato">
+    <div class="container">
+
+      <!-- Grid: texto à esquerda, fotos à direita -->
+      <div class="gato-grid">
+
+        <!-- Coluna de texto biográfico -->
+        <div class="gato-header fade-in">
+          <p class="subtitulo-secao">A lenda viva do surf</p>
+          <h2 class="titulo-secao" id="titulo-gato">O GATO –<br>Picuruta Salazar</h2>
+          <div class="linha-titulo" aria-hidden="true"></div>
+
+          <div class="gato-texto">
+            <p>
+              Apelidado de "O Gato" por sua elegância natural sobre as ondas, <strong>Picuruta Salazar</strong>
+              é um dos maiores nomes do surf brasileiro — multicampeão de longboard e verdadeira
+              lenda viva do esporte.
+            </p>
+            <p>
+              Natural de Santos, Picuruta colocou a cidade no mapa do surf mundial com seus
+              títulos, seu estilo inconfundível e sua presença marcante em competições pelo
+              mundo inteiro.
+            </p>
+            <p>
+              Entre seus feitos mais marcantes está o recorde de surfar a <strong>Pororoca</strong>
+              — a onda do encontro do Rio Araguari com o oceano no Amapá — além de dezenas
+              de títulos nacionais e internacionais ao longo de mais de três décadas de carreira.
+            </p>
+            <p>
+              Hoje, O Gato dedica parte de sua vida a formar a próxima geração de surfistas
+              na escola que leva seu nome, passando não apenas técnica, mas paixão pelo mar.
+            </p>
+          </div>
+
+          <!-- Botões de ação -->
+          <div class="gato-botoes">
+            <!-- Link para o Instagram do Picuruta (configurável) -->
+            <a
+              href="https://www.instagram.com/picurutasalazar"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-instagram"
+              aria-label="Seguir Picuruta Salazar no Instagram"
+            >
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+              Siga no Instagram
+            </a>
+
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna do mosaico de fotos -->
+        <div class="gato-fotos fade-in" aria-label="Galeria de fotos do Picuruta">
+          <!-- Foto grande (span 2 linhas) — placeholder com gradiente -->
+          <div class="gato-foto" role="img" aria-label="Picuruta surfando">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,rgba(64,157,139,0.3),rgba(1,94,84,0.5));display:flex;align-items:center;justify-content:center;">
+              <i class="fa-solid fa-water" style="font-size:4rem;color:rgba(255,255,255,0.2)"></i>
+            </div>
+          </div>
+          <!-- Fotos menores -->
+          <div class="gato-foto" role="img" aria-label="Competição de surf">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,rgba(224,131,64,0.3),rgba(1,94,84,0.4));display:flex;align-items:center;justify-content:center;">
+              <i class="fa-solid fa-trophy" style="font-size:3rem;color:rgba(255,255,255,0.2)"></i>
+            </div>
+          </div>
+          <div class="gato-foto" role="img" aria-label="Aula de surf na praia">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,rgba(156,198,196,0.3),rgba(64,157,139,0.4));display:flex;align-items:center;justify-content:center;">
+              <i class="fa-solid fa-graduation-cap" style="font-size:3rem;color:rgba(255,255,255,0.2)"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sub-seção: Documentário "A Lenda do Gato" -->
+      <div class="gato-documentario fade-in" aria-labelledby="titulo-documentario">
+        <p class="subtitulo-secao">Assista ao filme</p>
+        <h3 class="titulo-secao" id="titulo-documentario">Documentário: A Lenda do Gato</h3>
+        <div class="linha-titulo" aria-hidden="true"></div>
+
+        <div class="doc-grid">
+          <!-- Texto de apresentação do documentário -->
+          <div class="doc-texto">
+            <p>
+              Mergulhe na história de vida do homem que transformou Santos em referência
+              mundial do surf. O documentário <strong>PICURUTA — A LENDA DO GATO</strong>
+              acompanha a trajetória de um atleta extraordinário, desde as primeiras ondas
+              até os picos mais remotos do planeta.
+            </p>
+            <p style="margin-top:16px">
+              Uma homenagem ao esporte, ao mar e à identidade de Santos — contada pela
+              própria lenda.
+            </p>
+          </div>
+
+          <!-- Embed do documentário no YouTube -->
+          <div class="doc-video">
+            <iframe
+              src="https://www.youtube.com/embed/CdKBSwZSWT4"
+              title="Documentário PICURUTA — A Lenda do Gato"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SEÇÃO SALAZAR OCEAN — EM CONSTRUÇÃO
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="salazar-ocean" class="secao" aria-labelledby="titulo-ocean">
+    <div class="container">
+      <div class="ocean-conteudo fade-in">
+
+        <!-- Ícone animado de âncora/ondas -->
+        <div class="ocean-icone" aria-hidden="true">
+          <i class="fa-solid fa-compass"></i>
+        </div>
+
+        <!-- Título da seção -->
+        <p class="subtitulo-secao" style="color:var(--teal-escuro)">Novo projeto</p>
+        <h2 class="titulo-secao" id="titulo-ocean">Salazar Ocean</h2>
+        <div class="linha-titulo" style="margin:12px auto 0;" aria-hidden="true"></div>
+
+        <!-- Texto breve sobre a seção em construção -->
+        <p>
+          Algo novo está chegando. O universo de Picuruta Salazar está prestes a se expandir
+          com um novo projeto que vai conectar surf, cultura e oceano de uma forma que você
+          ainda não viu. Fique atento.
+        </p>
+
+        <!-- Badge de status -->
+        <div class="ocean-badge" role="status" aria-label="Seção em construção">
+          <i class="fa-solid fa-clock" aria-hidden="true" style="margin-right:8px"></i>
+          Em Construção — Em breve novidades
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER — RODAPÉ
+  ═══════════════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo" aria-label="Rodapé do site">
+    <div class="container">
+
+      <!-- Grid do footer com 4 colunas -->
+      <div class="footer-grid">
+
+        <!-- Coluna 1: Brand e redes sociais -->
+        <div class="footer-brand">
+          <p class="footer-logo">PICURUTA <span>SALAZAR</span></p>
+          <p>
+            Escola de Surf e Competição de Santos — SP.
+            Em parceria com a Prefeitura de Santos desde 1997.
+          </p>
+          <!-- Links de redes sociais -->
+          <div class="footer-social" role="list" aria-label="Redes sociais">
+            <a
+              class="social-link"
+              href="https://www.instagram.com/picurutasalazar"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+              aria-label="Instagram do Picuruta Salazar"
+            >
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a
+              class="social-link"
+              href="https://www.youtube.com/@picurutasalazar"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+              aria-label="Canal do YouTube"
+            >
+              <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            </a>
+            <a
+              class="social-link"
+              href="https://www.picuruta.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+              aria-label="Site oficial"
+            >
+              <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Links rápidos -->
+        <nav class="footer-col" aria-label="Links rápidos">
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="#escola">Escola</a></li>
+            <li><a href="#aulas">Aulas</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+            <li><a href="#ogato">O Gato</a></li>
+            <li><a href="#salazar-ocean">Salazar Ocean</a></li>
+          </ul>
+        </nav>
+
+        <!-- Coluna 3: Links de ação -->
+        <nav class="footer-col" aria-label="Links de ação">
+          <h5>Ação</h5>
+          <ul>
+            <li><a href="inscricao.html">Inscreva-se</a></li>
+            <li><a href="#aulas">Aulas Gratuitas</a></li>
+            <li><a href="#aulas">Aulas Particulares</a></li>
+            <li><a href="https://www.picuruta.com.br" target="_blank" rel="noopener">Site Picuruta</a></li>
+          </ul>
+        </nav>
+
+        <!-- Coluna 4: Informações de contato -->
+        <address class="footer-col" style="font-style:normal" aria-label="Contato e endereço">
+          <h5>Contato</h5>
+          <div class="footer-contato">
+            <div class="footer-contato-item">
+              <i class="fa-solid fa-map-pin" aria-hidden="true"></i>
+              <span>Emissário / Quebra-Mar<br>Santos – SP, Brasil</span>
+            </div>
+            <div class="footer-contato-item">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span>WhatsApp (a confirmar)</span>
+            </div>
+            <div class="footer-contato-item">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span>contato@picuruta.com.br</span>
+            </div>
+          </div>
+        </address>
+
+      </div>
+
+      <!-- Rodapé final com copyright -->
+      <div class="footer-bottom">
+        <p>© 2025 Escola de Surf Picuruta Salazar. Todos os direitos reservados.</p>
+        <div class="footer-parceria">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+          <span>Parceria oficial com a Prefeitura de Santos</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       JAVASCRIPT
+       Toda a lógica de interatividade em um único bloco
+  ═══════════════════════════════════════════════════════════════ -->
+  <script>
+    /* ─────────────────────────────────────────────────────────────
+       NAVBAR: Adiciona classe 'scrolled' após o usuário rolar a página
+       Isso ativa a sombra e reduz a altura da navbar via CSS
+    ───────────────────────────────────────────────────────────── */
+    const navbar = document.getElementById('navbar'); // Referência à navbar
+
+    window.addEventListener('scroll', () => {
+      // Se o scroll vertical for maior que 50px, adiciona 'scrolled'; senão remove
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* ─────────────────────────────────────────────────────────────
+       MENU MOBILE: Abre/fecha o menu hambúrguer
+    ───────────────────────────────────────────────────────────── */
+    function toggleMenu() {
+      const menu       = document.getElementById('menuMobile'); // Referência ao menu mobile
+      const hamburger  = document.getElementById('hamburger');  // Referência ao botão
+      const estaAberto = menu.classList.toggle('aberto');       // Alterna a classe 'aberto'
+
+      hamburger.setAttribute('aria-expanded', estaAberto);     // Atualiza acessibilidade
+    }
+
+    function fecharMenu() {
+      const menu      = document.getElementById('menuMobile');
+      const hamburger = document.getElementById('hamburger');
+      menu.classList.remove('aberto');             // Remove a classe que mostra o menu
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       PARALLAX DO HERO
+       Move o fundo do hero em velocidade reduzida ao rolar,
+       criando profundidade. Usa requestAnimationFrame para
+       performance máxima (evita reflow desnecessário).
+    ───────────────────────────────────────────────────────────── */
+    const heroBg = document.getElementById('heroBg'); // Referência ao fundo do hero
+
+    let ticking = false; // Flag para controlar o requestAnimationFrame
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // Move o fundo 40% mais lento que o scroll → cria o efeito parallax
+          heroBg.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+          ticking = false;
+        });
+        ticking = true; // Marca que um frame já foi solicitado
+      }
+    });
+
+    /* ─────────────────────────────────────────────────────────────
+       ANIMAÇÃO DE ENTRADA (IntersectionObserver)
+       Observa todos os elementos com classe 'fade-in'.
+       Quando entram na viewport (ficam visíveis), adiciona
+       a classe 'visivel' que dispara a animação CSS.
+    ───────────────────────────────────────────────────────────── */
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            // Elemento entrou na viewport → ativa a animação
+            entrada.target.classList.add('visivel');
+            // Para de observar após a primeira animação (otimização)
+            observador.unobserve(entrada.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12, // Elemento precisa estar 12% visível para disparar
+        rootMargin: '0px 0px -40px 0px' // Aguarda o elemento estar um pouco mais para dentro
+      }
+    );
+
+    // Seleciona todos os elementos com a classe fade-in e os registra no observador
+    document.querySelectorAll('.fade-in').forEach((el) => observador.observe(el));
+
+    /* ─────────────────────────────────────────────────────────────
+       HOVER NA LINHA DO TÍTULO (efeito: linha cresce ao hover)
+       Quando o mouse entra em qualquer seção, a linha decorativa
+       do título cresce de 60px para 120px.
+    ───────────────────────────────────────────────────────────── */
+    document.querySelectorAll('.titulo-secao').forEach((titulo) => {
+      const pai  = titulo.closest('header, .escola-texto, .gato-header, .ocean-conteudo, .doc-texto');
+      const linha = pai ? pai.querySelector('.linha-titulo') : null;
+
+      if (!linha) return; // Se não há linha, encerra
+
+      titulo.addEventListener('mouseenter', () => {
+        linha.style.width = '120px'; // Cresce ao hover
+      });
+
+      titulo.addEventListener('mouseleave', () => {
+        linha.style.width = '60px';  // Volta ao tamanho original
+      });
+    });
+
+    /* ─────────────────────────────────────────────────────────────
+       KEYBOARD NAVIGATION: Permite navegar no menu com teclado
+       (Enter e Espaço ativam clique nos itens de menu)
+    ───────────────────────────────────────────────────────────── */
+    document.querySelectorAll('.nav-item[tabindex]').forEach((item) => {
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault(); // Previne o scroll padrão do espaço
+          item.click();       // Dispara o onclick do item
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
